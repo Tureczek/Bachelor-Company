@@ -13,8 +13,6 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-//property = "companyId")
 @Table(name = "companies")
 public class Company {
 
@@ -53,11 +51,6 @@ public class Company {
     @ManyToMany(mappedBy = "companies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JsonManagedReference
     @EqualsAndHashCode.Exclude
- /*
-            @JoinTable(
-                    name = "business_fields",
-                    joinColumns = @JoinColumn(name = "company_id"),
-                    inverseJoinColumns = @JoinColumn(name = "field_id")) */
     private Set<Field> fields;
 
 }
