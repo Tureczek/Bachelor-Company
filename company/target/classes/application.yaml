@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=bachelor
-    username: test
-    password: Test1234
+    username: test1234
+    password: test1234
 
   jpa:
     properties:

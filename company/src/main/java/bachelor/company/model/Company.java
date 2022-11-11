@@ -1,20 +1,20 @@
 package bachelor.company.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+//property = "companyId")
 @Table(name = "companies")
 public class Company {
 
@@ -42,16 +42,22 @@ public class Company {
 
     @OneToOne(mappedBy = "company", cascade = CascadeType.DETACH)
     @JsonManagedReference
+    @EqualsAndHashCode.Exclude
     @PrimaryKeyJoinColumn
     private Score score;
 
     @OneToMany(mappedBy = "fkCompany", fetch = FetchType.LAZY)
     private List<Department> department;
 
-    @ManyToMany
+
+    @ManyToMany(mappedBy = "companies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @EqualsAndHashCode.Exclude
+ /*
             @JoinTable(
-                    name = "work_fields",
+                    name = "business_fields",
                     joinColumns = @JoinColumn(name = "company_id"),
-                    inverseJoinColumns = @JoinColumn(name = "field_id"))
-    Set<Field> fields;
+                    inverseJoinColumns = @JoinColumn(name = "field_id")) */
+    private Set<Field> fields;
+
 }
