@@ -50,7 +50,7 @@ public class Company {
 
 
     @ManyToMany(mappedBy = "companies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    //@EqualsAndHashCode.Exclude
+    @EqualsAndHashCode.Exclude
     private Set<Field> fields;
 
 }

@@ -3,6 +3,7 @@ package bachelor.company.model;
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
 
@@ -49,6 +50,7 @@ public class Score {
 
 
     @OneToOne
+    @EqualsAndHashCode.Exclude
     @JoinColumn(name = "fk_company")
     private Company company;
 

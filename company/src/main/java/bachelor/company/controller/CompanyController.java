@@ -27,7 +27,7 @@ public class CompanyController {
 
     @GetMapping("/{companyId}")
     public ResponseEntity<Object> getCompanyById(@PathVariable UUID companyId) throws Exception {
-        return  companyService.getCompanyById(companyId);
+        return companyService.getCompanyById(companyId);
     }
 
     @PutMapping("/{companyId}")

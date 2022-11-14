@@ -3,6 +3,7 @@ package bachelor.company.model;
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -27,6 +28,7 @@ public class Field {
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JsonBackReference
     @JoinTable(
             name = "business_fields",
             joinColumns = {@JoinColumn(name = "field_id")},
