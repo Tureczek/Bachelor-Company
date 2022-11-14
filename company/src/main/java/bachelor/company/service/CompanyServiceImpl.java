@@ -31,8 +31,13 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company createCompany(Company company) {
-        return null;
+    public ResponseEntity<Object> createCompany(Company company) {
+        try {
+            Company newCompany = companyRepository.save(company);
+            return ResponseEntity.status(200).body(newCompany);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error in creating company.");
+        }
     }
 
     @Override
@@ -46,8 +51,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public String deleteCompany(UUID companyId) {
-        companyRepository.deleteById(companyId);
-        return "Delete successful";
+    public ResponseEntity<Object> deleteCompany(UUID companyId) {
+        try {
+            companyRepository.deleteById(companyId);
+            return ResponseEntity.status(200).body("Company succesfully deleted");
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body("Company not found");
+        }
     }
 }

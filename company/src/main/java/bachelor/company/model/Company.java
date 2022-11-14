@@ -1,6 +1,7 @@
 package bachelor.company.model;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,6 +14,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "companyId", scope = Company.class)
 @Table(name = "companies")
 public class Company {
 
@@ -39,18 +41,16 @@ public class Company {
 
 
     @OneToOne(mappedBy = "company", cascade = CascadeType.DETACH)
-    @JsonManagedReference
-    @EqualsAndHashCode.Exclude
     @PrimaryKeyJoinColumn
     private Score score;
+
 
     @OneToMany(mappedBy = "fkCompany", fetch = FetchType.LAZY)
     private List<Department> department;
 
 
     @ManyToMany(mappedBy = "companies", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JsonManagedReference
-    @EqualsAndHashCode.Exclude
+    //@EqualsAndHashCode.Exclude
     private Set<Field> fields;
 
 }

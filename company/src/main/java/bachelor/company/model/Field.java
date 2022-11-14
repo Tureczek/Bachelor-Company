@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "fieldId", scope = Field.class)
 @Table(name = "fields")
 public class Field {
 
@@ -31,6 +32,5 @@ public class Field {
             joinColumns = {@JoinColumn(name = "field_id")},
             inverseJoinColumns = {@JoinColumn(name = "company_id")}
     )
-    @JsonBackReference
     private Set<Company> companies;
 }

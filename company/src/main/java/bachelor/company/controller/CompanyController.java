@@ -6,6 +6,7 @@ import bachelor.company.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,9 +34,19 @@ public class CompanyController {
         return  companyService.getCompanyById(companyId);
     }
 
-    @PatchMapping("/{companyId}")
+    @PutMapping("/{companyId}")
     public Optional<Company> updateCompany (@RequestBody Company company, @PathVariable UUID companyId) {
         return companyService.updateCompany(company, companyId);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Object> createCompany(@RequestBody Company company){
+        return companyService.createCompany(company);
+    }
+
+    @DeleteMapping("/{companyId}")
+    public ResponseEntity<Object> deleteCompany(@PathVariable UUID companyId){
+        return  companyService.deleteCompany(companyId);
     }
 
 }

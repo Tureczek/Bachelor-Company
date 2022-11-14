@@ -13,10 +13,10 @@ public interface CompanyService {
 
     ResponseEntity<Object> getCompanyById(UUID companyId) throws Exception;
 
-    Company createCompany(Company company);
+    ResponseEntity<Object> createCompany(Company company);
 
     Optional<Company> updateCompany(Company company, UUID companyId);
 
-    String deleteCompany(UUID companyId);
+    ResponseEntity<Object> deleteCompany(UUID companyId);
 
 }

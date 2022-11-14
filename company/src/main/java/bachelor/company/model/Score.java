@@ -1,8 +1,6 @@
 package bachelor.company.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "scoreId", scope = Score.class)
 @Table(name = "scores")
 public class Score {
 
@@ -50,7 +49,6 @@ public class Score {
 
 
     @OneToOne
-    @JsonBackReference
     @JoinColumn(name = "fk_company")
     private Company company;
 

@@ -1,5 +1,8 @@
 package bachelor.company.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +15,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "departmentId", scope = Department.class)
 @Table(name = "departments")
 public class Department {
 
@@ -26,6 +30,7 @@ public class Department {
     private String email;
     private UUID userId;
     private String phoneNumber;
+
 
     @OneToMany(mappedBy = "fkDepartment", fetch = FetchType.LAZY)
     private List<Announcement> announcements;
