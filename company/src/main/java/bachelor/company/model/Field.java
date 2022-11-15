@@ -22,7 +22,9 @@ public class Field {
     @Column(name = "field_id", nullable = false, columnDefinition = "UUID default gen_random_uuid()")
     private UUID fieldId;
 
+    @Column(name = "code", nullable = false)
     private String code;
+    @Column(name = "name", nullable = false)
     private String name;
 
 

@@ -42,16 +42,8 @@ public class Company {
     @Column(name = "fk_avg_score")
     private UUID fkAvgScore;
 
-/*
-    @OneToOne(mappedBy = "company", cascade = CascadeType.DETACH)
-    @PrimaryKeyJoinColumn
-    private Score score;
-    */
-
-
     @OneToMany(mappedBy = "fkCompany", fetch = FetchType.LAZY)
     private List<Department> department;
-
 
     @ManyToMany(mappedBy = "companies", cascade = CascadeType.DETACH)
     @EqualsAndHashCode.Exclude

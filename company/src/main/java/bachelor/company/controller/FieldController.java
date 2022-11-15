@@ -1,8 +1,7 @@
 package bachelor.company.controller;
 
 import bachelor.company.model.Field;
-import bachelor.company.service.FieldService.FieldService;
-import bachelor.company.service.departmentService.DepartmentService;
+import bachelor.company.service.fieldService.FieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/field")
+@RequestMapping("/fields")
 public class FieldController {
 
     @Autowired

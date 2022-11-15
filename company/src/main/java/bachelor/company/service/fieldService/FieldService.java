@@ -1,6 +1,5 @@
-package bachelor.company.service.FieldService;
+package bachelor.company.service.fieldService;
 
-import bachelor.company.model.Department;
 import bachelor.company.model.Field;
 import org.springframework.http.ResponseEntity;
 

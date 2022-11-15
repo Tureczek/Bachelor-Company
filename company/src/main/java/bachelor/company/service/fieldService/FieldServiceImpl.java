@@ -1,6 +1,5 @@
-package bachelor.company.service.FieldService;
+package bachelor.company.service.fieldService;
 
-import bachelor.company.model.Department;
 import bachelor.company.model.Field;
 import bachelor.company.repository.FieldRepository;
 import org.springframework.beans.factory.annotation.Autowired;

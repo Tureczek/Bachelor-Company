@@ -31,7 +31,6 @@ public class Department {
     private UUID userId;
     private String phoneNumber;
 
-
     @OneToMany(mappedBy = "fkDepartment", fetch = FetchType.LAZY)
     private List<Announcement> announcements;
 }
