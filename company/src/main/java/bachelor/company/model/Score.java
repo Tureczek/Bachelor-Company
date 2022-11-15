@@ -48,12 +48,12 @@ public class Score {
     private Double pensionScore;
     private Double fringeBenefitsScore;
 
-
+/*
     @OneToOne
     @EqualsAndHashCode.Exclude
     @JoinColumn(name = "fk_company")
     private Company company;
-
+*/
     private int reviewCount;
 
 }

@@ -42,13 +42,13 @@ public class FieldServiceImpl implements FieldService{
     }
 
     @Override
-    public ResponseEntity<Object> updateFields(Field field, UUID fieldId) {
+    public Optional<Object> updateFields(Field field, UUID fieldId) {
         Optional<Field> fieldExists = fieldRepository.findById(fieldId);
         if (fieldExists.isEmpty())
-            return ResponseEntity.status(404).body("Not found");
+            return Optional.empty();
         field.setFieldId(fieldId);
         fieldRepository.save(field);
-        return ResponseEntity.status(200).body(field);
+        return Optional.of(field);
     }
 
     @Override

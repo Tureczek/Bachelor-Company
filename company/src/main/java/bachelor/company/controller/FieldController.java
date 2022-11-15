@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -27,8 +28,8 @@ public class FieldController {
         return fieldService.getFieldById(fieldId);
     }
 
-    @PutMapping("/fieldId")
-    public ResponseEntity<Object> updateField(@RequestBody Field field, @PathVariable UUID fieldId){
+    @PutMapping("/{fieldId}")
+    public Optional<Object> updateField(@RequestBody Field field, @PathVariable UUID fieldId){
         return fieldService.updateFields(field, fieldId);
     }
 
