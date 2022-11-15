@@ -39,7 +39,7 @@ public class AnnouncementServiceImpl implements AnnouncementService{
             return ResponseEntity.status(500).body("Error in creating a new announcement.");
         }
     }
-    }
+    
 
     @Override
     public Optional<Object> updateAnnouncement(Announcement announcement, UUID announcementId) {
