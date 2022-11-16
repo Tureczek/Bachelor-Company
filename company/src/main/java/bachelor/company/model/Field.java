@@ -29,7 +29,7 @@ public class Field {
 
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JsonBackReference
+    //@JsonBackReference
     @JoinTable(
             name = "business_fields",
             joinColumns = {@JoinColumn(name = "field_id")},

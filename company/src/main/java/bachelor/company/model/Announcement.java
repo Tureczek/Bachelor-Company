@@ -3,6 +3,7 @@ package bachelor.company.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Announcement {
     private UUID fkDepartment;
     private String title;
     private String description;
+    @CreationTimestamp
     private Date createdDate;
     private Date validFrom;
 

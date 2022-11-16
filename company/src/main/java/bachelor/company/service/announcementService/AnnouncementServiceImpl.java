@@ -43,11 +43,22 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 
     @Override
     public Optional<Object> updateAnnouncement(Announcement announcement, UUID announcementId) {
-        return Optional.empty();
+        Optional<Announcement> announcementExists = announcementRepository.findById(announcementId);
+        if (announcementExists.isEmpty())
+            return Optional.empty();
+        announcement.setAnnouncementId(announcementId);
+        announcementRepository.save(announcement);
+        return Optional.of(announcement);
+
     }
 
     @Override
     public ResponseEntity<Object> deleteAnnouncement(UUID announcementId) {
-        return null;
+        try {
+            announcementRepository.deleteById(announcementId);
+            return ResponseEntity.status(200).body("Deleted field successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(404).body("Item not found");
+        }
     }
 }
