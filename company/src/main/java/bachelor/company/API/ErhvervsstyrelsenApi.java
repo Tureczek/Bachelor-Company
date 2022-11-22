@@ -30,7 +30,7 @@ public class ErhvervsstyrelsenApi {
 
         try {
 
-            URL url = new URL("http://localhost:8007/companies/cp");
+            URL url = new URL("http://localhost:8007/companies/search");
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
