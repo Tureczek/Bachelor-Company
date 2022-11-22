@@ -44,5 +44,4 @@ public class CompanyController {
     public ResponseEntity<Object> deleteCompany(@PathVariable UUID companyId){
         return  companyService.deleteCompany(companyId);
     }
-
 }
