@@ -14,10 +14,10 @@ public class CompanyDTO implements Serializable {
 
     private String navn;
     private int cvr;
-    private String barnchetekst;
-    private int barnchekode;
+    private String hovedBarnchetekst;
+    private int hovedBarnchekode;
     private List<Integer> penhederList;
-    private List<Integer> bibrancheList;
+    private List<String> bibrancheList;
     private int vejkode;
     private int postnummer;
 

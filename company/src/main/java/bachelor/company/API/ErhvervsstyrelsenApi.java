@@ -1,26 +1,21 @@
 package bachelor.company.API;
-
 import bachelor.company.DTO.CompanyDTO;
+import bachelor.company.model.Company;
+import bachelor.company.service.companyService.CompanyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
-
 import javax.script.ScriptException;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
+import java.util.UUID;
 
 public class ErhvervsstyrelsenApi {
 
+    @Autowired
+    CompanyService companyService;
+
+    java.util.Date date = new java.util.Date();
     public CompanyDTO[] fetchCompanyData() throws ScriptException {
         try {
-
             CompanyDTO[] companyDTOS;
 
             RestTemplate restTemplate = new RestTemplate();
@@ -28,40 +23,47 @@ public class ErhvervsstyrelsenApi {
 
             ObjectMapper objectMapper = new ObjectMapper();
             companyDTOS = objectMapper.readValue(jsonArray, CompanyDTO[].class);
-            System.out.println("Company name: " + companyDTOS[0].getNavn());
+            return companyDTOS;
         } catch (Exception e) {
             System.out.println(e);
         }
         return null;
     }
 
-    public static void main(String[] args) throws ScriptException {
-         ErhvervsstyrelsenApi erhvervsstyrelsenApi = new ErhvervsstyrelsenApi();
-         erhvervsstyrelsenApi.fetchCompanyData();
-/*
+    public void insertIntoCompany() {
+        ErhvervsstyrelsenApi erhvervsstyrelsenApi = new ErhvervsstyrelsenApi();
         try {
+            CompanyDTO[] company = erhvervsstyrelsenApi.fetchCompanyData();
 
-            URL url = new URL("http://localhost:8007/companies/_search");
+            for (int i = 0; i < company.length; i++) {
+                System.out.println(company[i].getNavn().trim());
+                System.out.println(company[i].getCvr());
+                System.out.println(company[i].getHovedBarnchekode());
+                System.out.println(company[i].getHovedBarnchetekst());
+                System.out.println(company[i].getPenhederList());
+                System.out.println("bibrancher = " + company[i].getBibrancheList());
+                System.out.println(company[i].getVejkode());
+                System.out.println(company[i].getPostnummer());
+                System.out.println("\n");
 
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setDoOutput(true);
-            InputStream content = connection.getInputStream();
-            String line;
-            StringBuilder sb = new StringBuilder();
-            BufferedReader in = new BufferedReader(new InputStreamReader(content));
-            while ((line = in.readLine()) != null) {
-                sb.append(line);
+                Company com = new Company();
+                com.setCompanyName(company[i].getNavn());
+                com.setCvr(company[i].getCvr());
+
+                companyService.createCompany(com);
             }
-
-            System.out.println(sb);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-*/
     }
 
+
+
+    public static void main(String[] args) throws ScriptException {
+
+        ErhvervsstyrelsenApi erhvervsstyrelsenApi = new ErhvervsstyrelsenApi();
+        erhvervsstyrelsenApi.insertIntoCompany();
+    }
 }
 
 
