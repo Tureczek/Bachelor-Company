@@ -4,16 +4,17 @@ import bachelor.company.model.Company;
 import bachelor.company.service.companyService.CompanyService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import javax.script.ScriptException;
 import java.util.UUID;
 
+@Service
 public class ErhvervsstyrelsenApi {
 
-    @Autowired
-    CompanyService companyService;
 
-    java.util.Date date = new java.util.Date();
+
     public CompanyDTO[] fetchCompanyData() throws ScriptException {
         try {
             CompanyDTO[] companyDTOS;
@@ -29,7 +30,7 @@ public class ErhvervsstyrelsenApi {
         }
         return null;
     }
-
+/*
     public void insertIntoCompany() {
         ErhvervsstyrelsenApi erhvervsstyrelsenApi = new ErhvervsstyrelsenApi();
         try {
@@ -57,13 +58,7 @@ public class ErhvervsstyrelsenApi {
         }
     }
 
-
-
-    public static void main(String[] args) throws ScriptException {
-
-        ErhvervsstyrelsenApi erhvervsstyrelsenApi = new ErhvervsstyrelsenApi();
-        erhvervsstyrelsenApi.insertIntoCompany();
-    }
+ */
 }
 
 

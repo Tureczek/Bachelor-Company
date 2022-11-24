@@ -15,6 +15,8 @@ public interface CompanyService {
 
     ResponseEntity<Object> createCompany(Company company);
 
+    void saveMultipleCompanies(List<Company> companies);
+
     Optional<Company> updateCompany(Company company, UUID companyId);
 
     ResponseEntity<Object> deleteCompany(UUID companyId);

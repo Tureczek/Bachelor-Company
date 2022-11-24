@@ -41,6 +41,16 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public void saveMultipleCompanies(List<Company> companies) {
+        try {
+            companyRepository.saveAll(companies);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
     public Optional<Company> updateCompany(Company company, UUID companyId) {
         Optional<Company> companyExists = companyRepository.findById(companyId);
         if (companyExists.isEmpty())
